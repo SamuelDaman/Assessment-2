@@ -10,6 +10,7 @@ namespace ConsoleApp1
     {
         Texture2D texture = new Texture2D();
         Image image = new Image();
+        public AABB2 boundingBox = new AABB2();
 
         public float Width
         {
@@ -32,7 +33,7 @@ namespace ConsoleApp1
         {
             float rotation = (float)Math.Atan2(globalTransform.m2, globalTransform.m1);
 
-            DrawTextureEx(texture, new Vector2(globalTransform.m7, globalTransform.m8), rotation * (float)(180.0f / Math.PI), 1, Color.WHITE);
+            DrawTextureEx(texture, new Vector2(globalTransform.m7, globalTransform.m8), rotation * (float)(180.0f / Math.PI), 1, Color.YELLOW);
         }
     }
 }

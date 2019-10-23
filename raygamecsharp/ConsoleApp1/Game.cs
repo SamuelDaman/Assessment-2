@@ -22,6 +22,10 @@ namespace ConsoleApp1
         SceneObject tankObject = new SceneObject();
         SceneObject turretObject = new SceneObject();
         SceneObject bulletObject = new SceneObject();
+        SceneObject tankHitBoxPoint1 = new SceneObject();
+        SceneObject tankHitBoxPoint2 = new SceneObject();
+        SceneObject tankHitBoxPoint3 = new SceneObject();
+        SceneObject tankHitBoxPoint4 = new SceneObject();
 
         SpriteObject tankSprite = new SpriteObject();
         SpriteObject turretSprite = new SpriteObject();
@@ -40,9 +44,18 @@ namespace ConsoleApp1
             turretSprite.SetRotate(-90 * (float)(Math.PI / 180f));
             turretSprite.SetPosition(0, turretSprite.Width / 2f);
 
+            tankHitBoxPoint1.SetPosition(-tankSprite.Width / 2f, -tankSprite.Height / 2f);
+            tankHitBoxPoint2.SetPosition(tankSprite.Width / 2f, -tankSprite.Height / 2f);
+            tankHitBoxPoint3.SetPosition(tankSprite.Width / 2f, tankSprite.Height / 2f);
+            tankHitBoxPoint4.SetPosition(-tankSprite.Width / 2f, tankSprite.Height / 2f);
+
             turretObject.AddChild(turretSprite);
             tankObject.AddChild(tankSprite);
             tankObject.AddChild(turretObject);
+            tankObject.AddChild(tankHitBoxPoint1);
+            tankObject.AddChild(tankHitBoxPoint2);
+            tankObject.AddChild(tankHitBoxPoint3);
+            tankObject.AddChild(tankHitBoxPoint4);
 
             tankObject.SetPosition(GetScreenWidth() / 2f, GetScreenHeight() / 2f);
         }
