@@ -6,11 +6,13 @@ using static Raylib.Raylib;
 
 namespace ConsoleApp1
 {
+    /// <summary>
+    /// This contains information for the sprite images attached to scene objects.
+    /// </summary>
     class SpriteObject : SceneObject
     {
         Texture2D texture = new Texture2D();
         Image image = new Image();
-        public AABB2 boundingBox = new AABB2();
 
         public float Width
         {

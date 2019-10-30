@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ConsoleApp1
 {
+    /// <summary>
+    /// This is used for 2D Transforms. It isn't used in the project.
+    /// </summary>
     public class Matrix2
     {
         public static Matrix2 identity = new Matrix2(1, 0, 0, 1);
@@ -74,6 +77,9 @@ namespace ConsoleApp1
             Set(this * m);
         }
     }
+    /// <summary>
+    /// This is used for 3D transforms.
+    /// </summary>
     public class Matrix3
     {
         public static Matrix3 identity = new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
@@ -105,6 +111,24 @@ namespace ConsoleApp1
                 lhs.m1 * rhs.m7 + lhs.m4 * rhs.m8 + lhs.m7 * rhs.m9,
                 lhs.m2 * rhs.m7 + lhs.m5 * rhs.m8 + lhs.m8 * rhs.m9,
                 lhs.m3 * rhs.m7 + lhs.m6 * rhs.m8 + lhs.m9 * rhs.m9
+            );
+        }
+        public static Matrix3 operator +(Matrix3 lhs, Matrix3 rhs)
+        {
+            return new Matrix3
+            (
+                lhs.m1 + rhs.m1, lhs.m2 + rhs.m2, lhs.m3 + rhs.m3,
+                lhs.m4 + rhs.m4, lhs.m5 + rhs.m5, lhs.m6 + rhs.m6,
+                lhs.m7 + rhs.m7, lhs.m8 + rhs.m8, lhs.m9 + rhs.m9
+            );
+        }
+        public static Matrix3 operator -(Matrix3 lhs, Matrix3 rhs)
+        {
+            return new Matrix3
+            (
+                lhs.m1 - rhs.m1, lhs.m2 - rhs.m2, lhs.m3 - rhs.m3,
+                lhs.m4 - rhs.m4, lhs.m5 - rhs.m5, lhs.m6 - rhs.m6,
+                lhs.m7 - rhs.m7, lhs.m8 - rhs.m8, lhs.m9 - rhs.m9
             );
         }
         Matrix3 GetTransposed()
@@ -185,6 +209,10 @@ namespace ConsoleApp1
             m.SetRotateZ(radians);
             Set(this * m);
         }
+        public float GetRotateZ()
+        {
+            return (float)(Math.Atan2(m2, m1));
+        }
         public void SetTranslation(float x, float y)
         {
             m7 = x; m8 = y; m9 = 1;
@@ -202,6 +230,18 @@ namespace ConsoleApp1
             y.SetRotateY(yaw);
             z.SetRotateZ(roll);
             Set(z * y * x);
+        }
+        public float Magnitude()
+        {
+            return
+            (
+                (float)Math.Sqrt
+                (
+                    (m1 * m1) + (m2 * m2) + (m3 * m3) +
+                    (m4 * m4) + (m5 * m5) + (m6 * m6) +
+                    (m7 * m7) + (m8 * m8) + (m9 * m9)
+                )
+            );
         }
     }
     public class Matrix4

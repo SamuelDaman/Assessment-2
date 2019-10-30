@@ -6,6 +6,9 @@ using static Raylib.Raylib;
 
 namespace ConsoleApp1
 {
+    /// <summary>
+    /// This is used for 2D collision detection.
+    /// </summary>
     class AABB2
     {
         public Vector2 min = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
@@ -67,6 +70,9 @@ namespace ConsoleApp1
             return Vector2.Clamp(p, min, max);
         }
     }
+    /// <summary>
+    /// This is used for 3D collision detection, Although it isn't used in the project.
+    /// </summary>
     class AABB3
     {
         Vector3 min = new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);

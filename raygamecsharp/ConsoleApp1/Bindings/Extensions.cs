@@ -387,6 +387,31 @@ namespace Raylib
                 Raylib.Clamp(value1.x, min.x, max.x),
                 Raylib.Clamp(value1.y, min.y, max.y));
         }
+        public float Distance(Vector2 v)
+        {
+            double xDif = v.x - x;
+            double yDif = v.y - y;
+            return (float)Math.Sqrt((xDif * xDif) + (yDif * yDif));
+        }
+        public float Magnitude()
+        {
+            return (float)Math.Sqrt((x * x) + (y * y));
+        }
+        public float MagnitudeSqr()
+        {
+            return (x * x) + (y * y);
+        }
+        public float Dot(Vector2 rhs)
+        {
+            return x * rhs.x + y * rhs.y;
+        }
+        public Vector2 GetNormalized()
+        {
+            float m = Magnitude();
+            x /= m;
+            y /= m;
+            return new Vector2(x, y);
+        }
     }
 
     // Vector3 type
@@ -500,6 +525,33 @@ namespace Raylib
         public static Vector3 Clamp(Vector3 t, Vector3 a, Vector3 b)
         {
             return Max(a, Min(b, t));
+        }
+        public float Distance(Vector3 v)
+        {
+            double xDif = v.x - x;
+            double yDif = v.y - y;
+            double zDif = v.z - z;
+            return (float)Math.Sqrt((xDif * xDif) + (yDif * yDif) + (zDif * zDif));
+        }
+        public float Magnitude()
+        {
+            return (float)Math.Sqrt((x * x) + (y * y) + (z * z));
+        }
+        public float MagnitudeSqr()
+        {
+            return (x * x) + (y * y) + (z * z);
+        }
+        public float Dot(Vector3 rhs)
+        {
+            return x * rhs.x + y * rhs.y + z * rhs.z;
+        }
+        public Vector3 GetNormalized()
+        {
+            float m = Magnitude();
+            x /= m;
+            y /= m;
+            z /= m;
+            return new Vector3(x, y, z);
         }
     }
 

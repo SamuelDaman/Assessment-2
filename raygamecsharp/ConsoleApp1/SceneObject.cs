@@ -7,6 +7,9 @@ using static Raylib.Raylib;
 
 namespace ConsoleApp1
 {
+    /// <summary>
+    /// This contains information on objects in the game.
+    /// </summary>
     class SceneObject
     {
         protected SceneObject parent = null;
@@ -14,6 +17,13 @@ namespace ConsoleApp1
 
         public Matrix3 localTransform = new Matrix3();
         public Matrix3 globalTransform = new Matrix3();
+
+        public AABB2 boundingBox = new AABB2();
+
+        public void BoundingBox(List<Vector2> myPoints)
+        {
+            boundingBox.Fit(myPoints);
+        }
         public SceneObject Parent
         {
             get { return parent; }
@@ -51,7 +61,7 @@ namespace ConsoleApp1
         {
             get { return globalTransform; }
         }
-        void UpdateTransform()
+        public void UpdateTransform()
         {
             if (parent != null)
                 globalTransform = parent.globalTransform * localTransform;
